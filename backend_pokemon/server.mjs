@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDB from './config/db.mjs';
 import userRoutes from './routes/users.mjs';
 
 dotenv.config();
@@ -8,6 +9,9 @@ dotenv.config();
 //Initialize express into a variable
 const app = express();
 const PORT = 3000;
+
+//Connect database
+connectDB();
 
 //Middleware
 app.use(express.urlencoded({ extended: true }));
