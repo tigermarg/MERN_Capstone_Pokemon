@@ -1,16 +1,24 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import User from '../models/UserSchema.mjs';
 
 dotenv.config();
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send(`Post Request`)
-})
+router.post('/', async (req, res) => {
+    try{
 
-router.post('/', (req, res) => {
-    res.send(`Post Request`)
+    let newUser = new User(req.body);
+
+    await newUser.save();
+    
+    res.json(newUser)
+
+    } catch(err){
+        console.error(err)
+        res.status(500).json({msg: `Server Error`})
+    }
 })
 
 router.put('/', (req, res) => {
