@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import userRoutes from './routes/users.mjs';
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send(`Get Request`)
 })
+
+//Define Routes
+app.use('/users', userRoutes);
 
 //Listen
 app.listen(PORT, () => {
