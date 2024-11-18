@@ -5,6 +5,8 @@ import './App.css';
 import pokeball from './styles/pokeball.jpg';
 import Login from './pages/login';
 import Dashboard from './pages/Dashboard';
+import Survey from './components/dashboard/Survey';
+import Pokeball from './components/dashboard/Pokeball';
 
 function App() {
   const nav = useNavigate(); //Declare variable for useNavigate
@@ -27,6 +29,8 @@ function App() {
         } />
         <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/survey" element={<Survey/>} />
+        <Route path="/pokeball" element={<Pokeball/>} />
       </Routes>
     </div>
   )

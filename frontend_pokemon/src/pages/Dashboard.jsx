@@ -9,7 +9,7 @@ export default function Dashboard(){
   
         <h1>Welcome</h1>
         <p>Access to dashboard...</p>
-  
+
         {/* Log Out button */}
         <button onClick={() => alert('Logged Out!')}>Log Out</button>
       </div>
