@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import pokeball from './styles/pokeball.jpg';
-import Login from './pages/Login';
+import Login from './pages/login';
 import Dashboard from './pages/Dashboard';
 
 function App() {
