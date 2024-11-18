@@ -17,7 +17,7 @@ function App() {
         <Route path='/' element={
         <>
           <h2>Your Pokémon awaits!</h2>
-          <h3>Match your mood with a Pokémon today—Click the Pokéball to see who you catch!</h3>
+          <h3>Match your mood with a Pokémon—Click the Pokéball to see who you catch today!</h3>
           <img onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '40vw', height: 'auto' }} />             
         </>
         } />
