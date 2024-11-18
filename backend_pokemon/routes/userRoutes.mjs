@@ -1,3 +1,4 @@
+//Imports
 import express from 'express';
 import dotenv from 'dotenv';
 import User from '../models/UserSchema.mjs';
@@ -63,4 +64,5 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+//Export router
 export default router;

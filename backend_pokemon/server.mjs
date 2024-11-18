@@ -1,13 +1,13 @@
+//Imports 
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
 import userRoutes from './routes/userRoutes.mjs'
 
+//Setups
+const app = express();  //Initialize express into a variable
 dotenv.config();
-
-//Initialize express into a variable
-const app = express();
 const PORT = 3000;
 
 //Connect database
