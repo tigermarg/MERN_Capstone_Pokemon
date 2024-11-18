@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   const [formData, setFormData] = useState({ //State for formData
     email: '',
     password: '',
   });
+
+  const nav = useNavigate();
 
   function handleChange(e){ //Handler for input
     setFormData({
@@ -15,9 +18,10 @@ function LoginForm() {
 
   function handleSubmit(e){ //Handler for submit
     e.preventDefault();
+    nav('/dashboard') //navigate to dashboard
   }
 
-  return (
+  return (  //Form data
     <form onSubmit={handleSubmit}>
       <div>
         <label>Email:</label>
@@ -33,6 +37,7 @@ function LoginForm() {
           type="password" 
           onChange={handleChange} 
           required
+          minLength='6'
         />
       </div>
       <button type="submit">Login</button>

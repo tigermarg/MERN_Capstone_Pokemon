@@ -1,3 +1,4 @@
+//Imports
 import { useState } from 'react';
 import LoginForm from '../components/login/LoginForm';
 import SignUpForm from '../components/login/signUpForm';
@@ -5,6 +6,7 @@ import SignUpForm from '../components/login/signUpForm';
 export default function Login(){
   const [isLogin, setIsLogin] = useState(true); //State to toggle between LoginForm & SignUpForm
 
+  //Function for toggle
   function toggleForm(){
     setIsLogin(!isLogin); 
   };

@@ -1,18 +1,22 @@
+//Imports
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import pokeball from './styles/pokeball.jpg';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 function App() {
-  const nav = useNavigate();
+  const nav = useNavigate(); //Declare variable for useNavigate
   
+  //Click and navigate to login page
   function handleClick(){
     nav('/login');
   }
 
   return (
     <div>
+    {/* Create routes to pages */}
       <Routes>
         <Route path='/' element={
         <>
@@ -22,8 +26,7 @@ function App() {
         </>
         } />
         <Route path='/login' element={<Login />} />
-        <Route path='/dashboard' element />
-        <Route path='/mypokeball' element />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </div>
   )

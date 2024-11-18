@@ -1,4 +1,6 @@
+//Imports
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
   const [formData, setFormData] = useState({ //State for formData
@@ -6,6 +8,8 @@ function SignUpForm() {
     email: '',
     password: '',
   });
+
+  const nav = useNavigate(); //Declare variable for useNavigate
 
   function handleChange(){ //Handler for input changes
     setFormData({
@@ -16,9 +20,10 @@ function SignUpForm() {
 
   function handleSubmit(e){ //Handler for submit 
     e.preventDefault();
+    nav('/dashboard') //Navigate to dashboard
   }
 
-  return (
+  return ( //Form data
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
