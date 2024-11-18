@@ -1,5 +1,23 @@
 .App{
-  width: 100wh;
+  width: 100vh;
   height: 100vh;
+}
+
+body {
+  display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.pokeball {
+  animation: spin 8s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }

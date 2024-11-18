@@ -18,7 +18,7 @@ function App() {
         <>
           <h2>Your Pokémon awaits!</h2>
           <h3>Match your mood with a Pokémon—Click the Pokéball to see who you catch today!</h3>
-          <img onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '40vw', height: 'auto' }} />             
+          <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />             
         </>
         } />
         <Route path='/login' element={<Login />} />
