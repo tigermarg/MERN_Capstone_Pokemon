@@ -5,8 +5,8 @@ import './App.css';
 import pokeball from './styles/pokeball.jpg';
 import Login from './pages/login';
 import Dashboard from './pages/Dashboard';
-import Survey from './components/dashboard/Survey';
-import Pokeball from './components/dashboard/Pokeball';
+import Survey from './pages/Survey';
+import Pokeball from './pages/Pokeball';
 
 function App() {
   const nav = useNavigate(); //Declare variable for useNavigate
