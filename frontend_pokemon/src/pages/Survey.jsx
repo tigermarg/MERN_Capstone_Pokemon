@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Survey(){
+function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
   const [selectedMood, setSelectedMood] = useState(''); //State for mood selection
   const [pokemon, setPokemon] = useState(null); //State for Pokemon
   const [isSubmitted, setIsSubmitted] = useState(false); //Track from submission
@@ -32,7 +32,6 @@ function Survey(){
     const pokemonType = moodToPokemonType[selectedMood];
     setPokemon(null); //Reset previous Pokemon data
     setIsSubmitted(true); //Mark the form as submitted
-    alert(`Congrats! You caught...`)
 
     //Error handling
     try {
@@ -52,6 +51,9 @@ function Survey(){
 
       //Set the fetched Pokemon data
       setPokemon(pokemonData);
+      alert(`Congrats! You caught...`)
+
+      addPokemonToMyPokeball(pokemonData); //Add Pokemon to MyPokeball
 
     } catch (err) {
       console.error(err)

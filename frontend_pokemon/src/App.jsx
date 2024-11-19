@@ -1,4 +1,5 @@
 //Imports
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
@@ -9,7 +10,15 @@ import Survey from './pages/Survey';
 import Pokeball from './pages/Pokeball';
 
 function App() {
+  const [myPokeball, setMyPokeball] = useState([]); //State to hold Pokemon
   const nav = useNavigate(); //Declare variable for useNavigate
+
+  //Function to add Pokemon to Pokeball
+  function addPokemonToMyPokeball(pokemon){
+    setMyPokeball((prevPokemons) => [
+      ...prevPokemons, 
+      pokemon,
+    ])}
   
   //Click and navigate to login page
   function handleClick(){
@@ -29,8 +38,8 @@ function App() {
         } />
         <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path="/survey" element={<Survey/>} />
-        <Route path="/pokeball" element={<Pokeball/>} />
+        <Route path="/survey" element={<Survey addPokemonToMyPokeball={addPokemonToMyPokeball} />} />
+        <Route path="/pokeball" element={<Pokeball pokemons={myPokeball} />} />
       </Routes>
     </div>
   )
