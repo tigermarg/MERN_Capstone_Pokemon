@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import pokeball from './styles/pokeball.jpg';
-import Login from './pages/login';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Survey from './pages/Survey';
 import Pokeball from './pages/Pokeball';
@@ -37,6 +38,7 @@ function App() {
         </>
         } />
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path="/survey" element={<Survey addPokemonToMyPokeball={addPokemonToMyPokeball} />} />
         <Route path="/pokeball" element={<Pokeball pokemons={myPokeball} />} />

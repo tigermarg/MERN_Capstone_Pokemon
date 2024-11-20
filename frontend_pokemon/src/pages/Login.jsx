@@ -1,25 +1,37 @@
-//Imports
+//imports
 import { useState } from 'react';
-import LoginForm from '../components/login/LoginForm';
-import SignUpForm from '../components/login/signUpForm';
+import { useNavigate, Link } from 'react-router-dom';
+import LoginForm from '../components/LoginForm';
 
-export default function Login(){
-  const [isLogin, setIsLogin] = useState(true); //State to toggle between LoginForm & SignUpForm
+export default function Login() {
+  const [formData, setFormData] = useState({ //State for login form
+    email: '', 
+    password: '',
+  });
 
-  //Function for toggle
-  function toggleForm(){
-    setIsLogin(!isLogin); 
-  };
+  const nav = useNavigate(); //Declare variable for useNavigate
+
+  //Handler for input change
+  function handleChange(e) { 
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  //Handler for submit
+  function handleSubmit(e) { 
+    e.preventDefault();
+    nav('/dashboard'); // Redirect to dashboard after login
+  }
 
   return (
+    //Login form
     <div>
-      <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
-    {/* Conditional Rendering  */}
-      {isLogin ? <LoginForm /> : <SignUpForm />} 
-
-      <button onClick={toggleForm}>
-        {isLogin ? 'Need an account? Sign Up' : 'Already have an account? Log In'}
-      </button>
+      <h2>Login</h2>
+      <LoginForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      
+      <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
     </div>
   );
 }

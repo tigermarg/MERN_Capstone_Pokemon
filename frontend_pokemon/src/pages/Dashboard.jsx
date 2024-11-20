@@ -4,6 +4,7 @@ import NavBar from '../components/dashboard/NavBar';
 export default function Dashboard(){
 
     return(
+      //Navigation bar
         <div>
         <NavBar />
   
