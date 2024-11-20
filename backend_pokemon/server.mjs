@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 //Define Routes
-app.use('/users', userRoutes);
+app.use('/api/users', userRoutes);
 
 //Listen
 app.listen(PORT, () => {

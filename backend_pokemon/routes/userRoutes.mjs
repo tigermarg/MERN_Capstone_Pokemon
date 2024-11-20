@@ -37,6 +37,20 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Get one user
+router.get('/:id', async (req, res) => {
+    try {
+
+        let user = await User.findById(req.params.id)
+
+        res.json(user)
+
+    }catch(err){
+        console.error(err)
+        res.status(500).json({msg: `Server Error`})
+    }
+})
+
 //Edit user by id
 router.put('/:id', async (req, res) => {
     try{

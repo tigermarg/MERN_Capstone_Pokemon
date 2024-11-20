@@ -3,11 +3,9 @@ import mongoose from 'mongoose';
 
 //Create user schema
 const UserSchema = new mongoose.Schema({
-    user: {
+    name: {
         type: String,
         required: true, //validation
-        unique: true,
-        minLength: 5
     },
     email: {
         type: String,
@@ -22,7 +20,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 //Index users
-UserSchema.index({user: 1});
+UserSchema.index({email: 1});
 
 //Export 'User' schema
 export default mongoose.model('User', UserSchema);
