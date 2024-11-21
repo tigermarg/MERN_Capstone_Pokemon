@@ -5,7 +5,6 @@ function LoginForm({ formData, handleChange, handleSubmit }) { //Pass props from
         <label>Email:</label>
         <input type="email" 
           name="email" 
-          value={formData.email}
           onChange={handleChange} 
           required
         />
@@ -14,7 +13,6 @@ function LoginForm({ formData, handleChange, handleSubmit }) { //Pass props from
         <label>Password:</label>
         <input type="password" 
           name="password" 
-          value={formData.password}
           onChange={handleChange} 
           required
           minLength="6"
