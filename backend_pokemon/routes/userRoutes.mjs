@@ -1,8 +1,10 @@
 //Imports
 import express from 'express';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import { check, validationResult } from 'express-validator';
 import dotenv from 'dotenv';
 import User from '../models/UserSchema.mjs';
-import { check, validationResult } from 'express-validator';
 
 dotenv.config();
 
@@ -33,9 +35,7 @@ router.post( '/',
   
         //If user exists return with error message
         if (user) {
-          return res
-            .status(400)
-            .json({ errors: [{ msg: 'User Already Exists' }] });
+          return res.status(400).json({ errors: [{ msg: 'User Already Exists' }] });
         }
   
         //Create a new User
@@ -45,7 +45,32 @@ router.post( '/',
           password,
         });
 
+        //Encrpyt password
+        const salt = await bcrypt.genSalt(10);
+
+        user.password = await bcrypt.hash(password, salt);
+
+        //Save user
         await user.save();
+
+        //Create payload (data for frontend)
+        const payload = {
+          user: {
+            id: user.id,
+          }
+        };
+
+        //jsonwebtoken
+        jwt.sign(
+          payload,
+          process.env.jwtSecret,
+          {expiresIn: 3600}, //Expires after 3600 miliseconds
+          (err, token) => {//Handle errors or if successful completion, token
+            if(err) throw err;
+
+            res.json({token})
+          }
+        )
   
       } catch (err) {
         console.error(err);
