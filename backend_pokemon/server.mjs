@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
 import userRoutes from './routes/userRoutes.mjs';
+import authRoutes from './routes/authRoutes.mjs';
 import morgan from 'morgan';
 
 //Setups
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 //Define Routes
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 //Listen
 app.listen(PORT, () => {
