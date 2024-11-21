@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Survey from './pages/Survey';
 import Pokeball from './pages/Pokeball';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
   const [myPokeball, setMyPokeball] = useState([]); //State to hold Pokemon

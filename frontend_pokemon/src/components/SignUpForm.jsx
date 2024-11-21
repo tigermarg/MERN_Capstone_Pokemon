@@ -1,22 +1,22 @@
 function SignUpForm({ formData, handleChange, handleSubmit }) { //Pass props from SignUp page
   
-  //POST route using fetch to create new user 
-  async function handleClick(){
-    try {
-      let res = await fetch('http://localhost:3000/api/users/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData), // Convert form data to JSON
-      });
+  // POST route using fetch to create new user 
+  // async function handleClick(){
+  //   try {
+  //     let res = await fetch('http://localhost:3000/api/users/', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData), // Convert form data to JSON
+  //     });
   
-      let data = await res.json();
+  //     let data = await res.json();
       
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ function SignUpForm({ formData, handleChange, handleSubmit }) { //Pass props fro
           minLength="6"
         />
       </div>
-      <button onClick={handleClick} type="submit">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 }
