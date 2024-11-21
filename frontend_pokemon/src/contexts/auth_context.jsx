@@ -37,7 +37,7 @@ export default function AuthProvider ({ children }) {
         
             let data = await res.json();
     
-            setCookie('token', data.data.token)
+            setCookie('token', data.token)
             
           } catch (err) {
             console.error(err);

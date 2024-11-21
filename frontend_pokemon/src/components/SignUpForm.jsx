@@ -1,24 +1,36 @@
-function SignUpForm({ formData, handleChange, handleSubmit }) { //Pass props from SignUp page
-  
-  // POST route using fetch to create new user 
-  // async function handleClick(){
-  //   try {
-  //     let res = await fetch('http://localhost:3000/api/users/', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formData), // Convert form data to JSON
-  //     });
-  
-  //     let data = await res.json();
-      
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
+//Imports
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/auth_context';
+
+function SignUpForm() { 
+  const [formData, setFormData] = useState({ //State for signUp form
+    user: '',
+    email: '',
+    password: '',
+  });
+
+  const { signUp } = useAuth(); 
+  const nav = useNavigate(); //Declare variable for useNavigate
+
+  //Handler for input change
+  function handleChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  //Handler for submit
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await signUp(formData);
+    // console.log(formData)
+    nav('/dashboard'); //Redirect to dashboard after sign up      
+    }
 
   return (
+    //Sign Up Form
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
