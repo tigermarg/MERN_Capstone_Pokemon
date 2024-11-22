@@ -65,7 +65,7 @@ export default function AuthProvider ({ children }) {
       }
     }
     
-    //Logout function to remove token from cookies
+//Logout function to remove token from cookies
     const logout = () => {
         ['token'].forEach((cookie) => {
             removeCookie(cookie)
@@ -137,6 +137,40 @@ export default function AuthProvider ({ children }) {
       }
     };
 
+//DELETE request using fetch to delete account
+    const deleteAccount = async () => {
+      try {
+
+        const token = cookies.token;  //Access token from cookies
+
+        //If no token, throw an error
+        if (!token) {
+          throw new Error('No token found');
+        }
+    
+        const res = await fetch(`http://localhost:3000/api/auth/${cookies.userId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token, //Send token for authorization
+          },
+        });
+
+        const data = await res.json();  //Parse JSON response from api
+
+        //If response is not ok,
+        if (!res.ok) {
+          throw new Error(data.errors ? data.errors[0].msg : 'Failed to delete account');
+        }
+    
+        return data;  //Return success message or data from the response
+
+      } catch (err) {
+        console.error(err);
+        throw err; //Rethrow the error to be handled in the component
+      }
+    }
+
     //useMemo hook to memoize context value to avoid unnecessary re-renders
     const value = useMemo(() => ({
         cookies,  //access to cookies
@@ -145,6 +179,7 @@ export default function AuthProvider ({ children }) {
         logout, //function to logout user
         signUp, //function to signUp user
         updateProfile, //function to update user info
+        deleteAccount, //function to delete account
     }), [cookies])  //Dependencies //only re-run when cookies change
 
     //Wrap children components with AuthContext.Provider and pass context value

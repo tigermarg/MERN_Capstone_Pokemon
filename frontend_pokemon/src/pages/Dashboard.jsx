@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/auth_context';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/dashboard/NavBar';
 import UpdateProfile from '../components/dashboard/UpdateProfile';
+import DeleteAccount from '../components/dashboard/DeleteAccount';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null); //State for user data
@@ -46,6 +47,7 @@ export default function Dashboard() {
       <h1>Welcome, {user.name}</h1>
 
       <UpdateProfile />
+      <DeleteAccount />
 
       {/* Log Out button */}
       <button onClick={handleLogOut}>Log Out</button>

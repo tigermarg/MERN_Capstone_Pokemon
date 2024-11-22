@@ -15,9 +15,11 @@ const router = express.Router();
 // @access:  Private
 router.get('/', auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    //Find user by id, exclude password
+    const user = await User.findById(req.user.id).select('-password'); 
 
-    res.json(user);
+    res.json(user); //Return user info
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ errors: [{ msg: 'Server Error' }] });
@@ -125,6 +127,33 @@ router.put('/:id', auth, [
   } catch (err) {
     console.error(err);
     res.status(500).json({ errors: [{ msg: 'Server Error' }] }); 
+  }
+});
+
+// @route:   DELETE api/auth
+// @desc:    Delete user account
+// @access:  Private
+router.delete('/:id', auth, async (req, res) => {
+
+  //Get authenticated user id
+  const userId = req.user.id; 
+
+  try {
+    //Find and delete the user by id
+    let user = await User.findById(userId);
+
+    //If no user found, error message
+    if (!user) {
+      return res.status(404).json({ errors: [{ msg: 'User not found' }] });
+    }
+
+    await User.deleteOne({ _id: userId }); //Delete user from DB
+
+    res.json({ msg: 'User deleted successfully' }); //Return success message
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ errors: [{ msg: 'Server Error' }] });
   }
 });
 
