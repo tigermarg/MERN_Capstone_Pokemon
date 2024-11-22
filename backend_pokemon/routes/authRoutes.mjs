@@ -1,3 +1,4 @@
+//Imports 
 import express from 'express';
 import auth from '../middlware/auth.mjs';
 import User from '../models/UserSchema.mjs';
@@ -26,9 +27,7 @@ router.get('/', auth, async (req, res) => {
 // @route:   POST api/auth
 // @desc:    Login Route
 // @access:  Public
-router.post(
-  '/',
-  [
+router.post('/', [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password Required').not().isEmpty(),
   ],
@@ -88,5 +87,45 @@ router.post(
     }
   }
 );
+
+// @route:   PUT api/auth
+// @desc:    Update user info
+// @access:  Private
+router.put('/:id', auth, [
+  check('password', 'Password must be at least 6 characters').optional().isLength({ min: 6 }), //Validation 
+], async (req, res) => {
+  const errors = validationResult(req); //Run validation checks
+  
+  //Return validation errors if any
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() }); 
+  }
+
+  const { password } = req.body; //Destructure password from req.body
+  const userId = req.user.id; //Extract userId from authenticated user
+
+  try {
+    let user = await User.findById(userId); //Find user by id
+
+    //If no user, return error message
+    if (!user) {
+      return res.status(404).json({ errors: [{ msg: 'User not found' }] });
+    }
+
+    //Update password if provided in the req.body
+    if (password) {
+      const salt = await bcrypt.genSalt(10); //Salt for password hashing
+      user.password = await bcrypt.hash(password, salt); //Hash and update password
+    }
+
+    await user.save(); //Save the updated user to DB
+
+    res.json({ msg: 'User updated successfully' }); //Return success message
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ errors: [{ msg: 'Server Error' }] }); 
+  }
+});
 
 export default router;

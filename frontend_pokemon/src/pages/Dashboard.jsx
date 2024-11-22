@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/auth_context';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/dashboard/NavBar';
-
+import UpdateProfile from '../components/dashboard/UpdateProfile';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null); //State for user data
-  
-  const { logout, userInfo } = useAuth(); //Get user data and logout from context
-  const nav = useNavigate();
 
-  // Handler for log out
+  const { logout, userInfo } = useAuth(); //Get user data and logout from context
+  const nav = useNavigate(); //Hook to navigate
+
+  //Handler for log out
   function handleLogOut() {
     logout();
     nav('/'); //Redirect to main page at logout
@@ -44,6 +44,8 @@ export default function Dashboard() {
     <div>
       <NavBar />
       <h1>Welcome, {user.name}</h1>
+
+      <UpdateProfile />
 
       {/* Log Out button */}
       <button onClick={handleLogOut}>Log Out</button>

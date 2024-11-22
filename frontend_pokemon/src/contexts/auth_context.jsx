@@ -1,3 +1,4 @@
+//Imports
 import { createContext, useContext, useMemo } from 'react';
 import { useCookies } from 'react-cookie';
 
@@ -6,7 +7,7 @@ const AuthContext = createContext();
 export default function AuthProvider ({ children }) {
     const [cookies, setCookie, removeCookie] = useCookies();  //Hook to get and set cookies
 
-    //Login POST fetch request to backend
+//POST request using fetch for login
     const login = async(formData) => {
       try {
         let res = await fetch('http://localhost:3000/api/auth', { 
@@ -35,7 +36,7 @@ export default function AuthProvider ({ children }) {
       }
     };
 
-    //Sign up POST request to backend
+//POST request using fetch for sign up 
     const signUp = async (formData) => {
       try {
           let res = await fetch('http://localhost:3000/api/users', {  
@@ -71,7 +72,7 @@ export default function AuthProvider ({ children }) {
         })
     }
 
-    //User info GET request 
+//GET request using fetch for user info
     const userInfo = async () => {
       try {
         const token = cookies.token; //Access token from cookies
@@ -102,6 +103,40 @@ export default function AuthProvider ({ children }) {
       }
     };
 
+//PUT request using fetch to update user profile
+    const updateProfile = async (formData) => { //formData parm from UpdateProfileForm
+      try {
+        const token = cookies.token; //Access the token from cookies
+
+        //If no token, throw error
+        if (!token) {
+          throw new Error('No token found');
+        }
+    
+        const res = await fetch(`http://localhost:3000/api/auth/${cookies.userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token, //Send token for authorization
+          },
+          body: JSON.stringify(formData), //Send form data (password) in the request body
+        });
+    
+        const data = await res.json();  //Parse JSON response from api
+
+        //If response is not ok, throw error
+        if (!res.ok) {
+          throw new Error(data.errors?.[0]?.msg || 'Failed to update profile');
+        }
+    
+        return data; //Return the success message or updated data
+    
+      } catch (err) {
+        console.error(err);
+        throw err; //Rethrow the error so that it can be caught in the handleSubmit function
+      }
+    };
+
     //useMemo hook to memoize context value to avoid unnecessary re-renders
     const value = useMemo(() => ({
         cookies,  //access to cookies
@@ -109,6 +144,7 @@ export default function AuthProvider ({ children }) {
         login,  //function to login user
         logout, //function to logout user
         signUp, //function to signUp user
+        updateProfile, //function to update user info
     }), [cookies])  //Dependencies //only re-run when cookies change
 
     //Wrap children components with AuthContext.Provider and pass context value

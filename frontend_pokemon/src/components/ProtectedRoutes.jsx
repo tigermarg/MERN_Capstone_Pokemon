@@ -1,3 +1,4 @@
+//Imports
 import { Outlet } from 'react-router-dom';
 import { useAuth } from '../contexts/auth_context';
 
