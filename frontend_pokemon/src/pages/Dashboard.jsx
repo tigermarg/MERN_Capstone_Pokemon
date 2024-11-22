@@ -1,28 +1,52 @@
 //Imports
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/auth_context';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/dashboard/NavBar';
 
-export default function Dashboard(){
-  const { logout } = useAuth(); 
+
+export default function Dashboard() {
+  const [user, setUser] = useState(null); //State for user data
+  
+  const { logout, userInfo } = useAuth(); //Get user data and logout from context
   const nav = useNavigate();
 
-  //Handler for log out click event
-  function handleLogOut(e){
+  // Handler for log out
+  function handleLogOut() {
     logout();
     nav('/'); //Redirect to main page at logout
   }
 
-    return(
-      //Navigation bar
-        <div>
-        <NavBar />
-  
-        <h1>Welcome</h1>
-        <p>Access to dashboard...</p>
+  //Get user data when the component mounts
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
 
-        {/* Log Out button */}
-        <button onClick={handleLogOut}>Log Out</button>
-      </div>
-    )
+        const data = await userInfo();  //Fetch user data using the userInfo function from context
+        
+        setUser(data);  //Set the user data in the state
+
+      } catch (err) {
+        console.error('Failed to fetch user data:', err);
+      }
+    };
+
+    fetchUserInfo();
+  }, [userInfo]);  //Re-run the effect if userInfo function changes
+
+  //While user data is loading or isn't available...
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    //Navigation bar
+    <div>
+      <NavBar />
+      <h1>Welcome, {user.name}</h1>
+
+      {/* Log Out button */}
+      <button onClick={handleLogOut}>Log Out</button>
+    </div>
+  );
 }

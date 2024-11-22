@@ -71,9 +71,41 @@ export default function AuthProvider ({ children }) {
         })
     }
 
+    //User info GET request 
+    const userInfo = async () => {
+      try {
+        const token = cookies.token; //Access token from cookies
+        
+        //If no token, throw error
+        if (!token) {
+          throw new Error('No token found');
+        }
+  
+        const response = await fetch('http://localhost:3000/api/auth', {
+          method: 'GET',
+          headers: {
+            'x-auth-token': token, //Send token in auth header
+          },
+        });
+        
+        //If response is not ok, throw error
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+  
+        const data = await response.json(); //Parse JSON response from api
+
+        return data; //Return user data
+
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     //useMemo hook to memoize context value to avoid unnecessary re-renders
     const value = useMemo(() => ({
         cookies,  //access to cookies
+        userInfo, //function to get user info
         login,  //function to login user
         logout, //function to logout user
         signUp, //function to signUp user
