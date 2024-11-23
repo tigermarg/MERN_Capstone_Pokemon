@@ -1,5 +1,5 @@
 //Imports
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
@@ -35,10 +35,9 @@ function App() {
         <Route path='/' element={
         <>
           <h1 style={{ fontFamily: 'Pokemon' }}>Your PokéPal awaits!</h1>
-          <br/>   
-          <h3>Fetch a Pokémon to match your mood...</h3>
-          <h3>Click the Pokéball to see who you catch today!</h3>
-          <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />          
+          <h2 className='typing'>Fetch a Pokémon to match your mood...</h2>
+          <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />
+          <h3 className='swipe'>Click the Pokéball to see who you catch today!</h3>          
         </>
         } />
         <Route path='/login' element={<Login />} style={{ animation: 'none' }}/>

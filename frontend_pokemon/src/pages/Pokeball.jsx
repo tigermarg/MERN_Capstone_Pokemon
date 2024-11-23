@@ -4,7 +4,7 @@ export default function MyPokeball({ pokemons }) { //Destructure and pass in pok
       <div>
       <h2>I Choose...</h2>
       {pokemons.length === 0 ? ( //If Pokeball is empty, display...
-        <p>Your Pokeball is empty. Gotta catch 'em all...</p>
+        <p>Your Pokeball is empty. Unleash a PokéPal!</p>
       ) : (
         //If not, render...
         <div> 
@@ -12,7 +12,7 @@ export default function MyPokeball({ pokemons }) { //Destructure and pass in pok
             <div key={index}>
                 <img src={pokemon.sprites.other.home.front_default || pokemon.sprites.front_default}
                   alt={pokemon.name}
-                  style={{ width: '250px', height: 'auto' }} />
+                  style={{ width: '200px', height: 'auto' }} />
                 <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
             </div>
           ))}

@@ -6,27 +6,10 @@
   align-items: center;
 }
 
-body {
-  margin: 0;
-}
-
-.pokeball {
-  animation: spin 8s infinite linear;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
 .nav-links {
   display: flex;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: center;
 }
 
 .nav-links .li {
@@ -40,4 +23,197 @@ body {
   padding: 5px 10px;
   border: none;
   cursor: pointer; 
+}
+
+@font-face {
+  font-family: 'Pokemon';
+  src: url('./styles/PocketMonk-15ze.ttf');
+}
+
+body {
+  font-family: 'Geneva', 'Tahoma', 'sans-serif';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: auto;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.605);
+  background-color: #000000b0; 
+  background-size: cover; 
+  background-position: no-repeat center center fixed;
+}
+
+@keyframes stars {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('./styles/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  animation: stars 3s infinite ease-in-out;
+  z-index: -1;
+}
+
+h1 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-family: 'Pokemon';
+  font-size: 6rem;
+  text-shadow: 2px 4px rgba(0, 0, 0, 0.651);
+  color: #FFD700; 
+  transform: translateY(0);
+  animation: popOut 2s ease-out 1, scaleLeftRight 2s ease-in-out 1;
+}
+
+
+@keyframes popOut {
+  0% {
+    transform: translateY(50px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleLeftRight {
+  0% {
+    transform: scaleX(0.8);
+  }
+  50% {
+    transform: scaleX(1.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.pokeball {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px rgb(254, 254, 254); 
+  animation: spin 8s infinite linear, floating 4s ease-in-out infinite;
+  background-color: transparent;
+  z-index: 1;
+  transition: all 0.3s ease; 
+}
+
+.pokeball:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 0 15px 20px rgba(255, 255, 255, 0.682); 
+  animation: floating 3s ease-in-out infinite;
+  cursor: url("https://downloads.totallyfreecursors.com/cursor_files/pikachu.cur"), url("https://downloads.totallyfreecursors.com/thumbnails/pikachu.gif"), auto;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+button {
+  background-color: #ebebebad; 
+  color: #2b8d08; 
+  padding: 6px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05); 
+}
+
+
+.audio-container {
+  text-align: center;
+}
+
+audio {
+  position: fixed; 
+  right: 0; 
+  bottom: 0;
+  width: 100%;
+  max-width: 50px; 
+  background-color: #333; 
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+}
+
+audio:hover {
+  background-color: #333;
+}
+
+.typing {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  overflow: hidden;
+  border-right: 3px solid black;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 4s steps(80) forwards, blink 0.75s step-end infinite;
+}
+
+.swipe {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: swipe 1s ease-out 4s forwards; 
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes swipe {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1rem;
+  }
 }

@@ -4,6 +4,7 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
   const [selectedMood, setSelectedMood] = useState(''); //State for mood selection
   const [pokemon, setPokemon] = useState(null); //State for Pokemon
   const [isSubmitted, setIsSubmitted] = useState(false); //Track from submission
+  const [pokemonPosition, setPokemonPosition] = useState({ x: 0, y: 0 }); //To track position
 
   //Define the mapping of moods to Pokemon types
   const moodToPokemonType = {
@@ -60,48 +61,65 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
     }
   };    
   
-  return (
-    <div>
-      {/* If form is not submitted, display.. */}
-      {!isSubmitted ? (
-        <>
-          <h2>Which best describes your current mood?</h2>
-
-          {/* Survey form */}
-          <form onSubmit={handleSubmit}>
+  //Mouse move function
+  const handleMouseMove = (e) => {
+    if (e.buttons === 1) {  //If the Pokemon image is being dragged (e.buttons = state of mouse buttons when e is triggered; 1 = left mouse button is pressed)
+      setPokemonPosition((prevPosition) => ({
+        x: prevPosition.x + e.movementX,
+        y: prevPosition.y + e.movementY,
+      }));
+    }
+  };
+  
+    return (
+      //Track mouse movement //Set to full page
+      <div onMouseMove={handleMouseMove} style={{ position: 'relative', height: '100vh', width: '100vw' }}>
+        {!isSubmitted ? (
+          <>
+            <h2>Which best describes your current mood?</h2>
+  
+            <form onSubmit={handleSubmit}>
+              <div>
+                {Object.keys(moodToPokemonType).map((mood) => (
+                  <label key={mood}>
+                    <input type="radio"
+                      name="mood"
+                      value={mood}
+                      onChange={handleMoodChange}
+                      checked={selectedMood === mood}
+                    />
+                    {mood.charAt(0).toUpperCase() + mood.slice(1)}
+                  </label>
+                ))}
+              </div>
+  
+              <button type="submit">Catch Pokémon</button>
+            </form>
+          </>
+        ) : (
+          <>
             <div>
-              {Object.keys(moodToPokemonType).map((mood) => (
-                <label key={mood}>
-                  <input type="radio"
-                    name="mood"
-                    value={mood}
-                    onChange={handleMoodChange}
-                    checked={selectedMood === mood}/>
-                  {mood.charAt(0).toUpperCase() + mood.slice(1)}
-                </label>
-              ))}
-            </div>
-
-            <button type="submit">Catch Pokémon</button>
-          </form>
-        </>
-      ) : (
-        // Once form is submitted, display... 
-        <>
-          <div>
-            {pokemon ? (
-              <>
+              {pokemon ? (
                 <img src={pokemon.sprites.other.home.front_default || pokemon.sprites.front_default}
                   alt={pokemon.name}
-                  style={{ width: '250px', height: 'auto' }} />
-                <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
-              </>
-            ) : (<p>Catching your Pokémon...</p>)}
-          </div>
-        </>
-      )}
-    </div>
-  );
+                  style={{
+                    position: 'absolute', //Absolute positioning to allow free movemen around page
+                    top: `${pokemonPosition.y}px`, //Y positioning for movement
+                    left: `${pokemonPosition.x}px`, //X positioning for movement
+                    width: '200px', //Pokemon size
+                    height: 'auto',
+                    cursor: 'grab', //Indicate Pokemon is draggable
+                  }}
+                  draggable //Attribute set to true
+                />
+              ) : (
+                <p>Catching your Pokémon...</p>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    );
 };
 
 export default Survey;

@@ -17,11 +17,14 @@ export default function NavBar(){
         //Links to Suvey and MyPokeball
         <nav>
             <ul className='nav-links'>
-                <li class="li"><Link to="/survey">Catch Pokemon</Link></li>
+                <li class="li"><Link to="/survey">Catch PokéPal</Link></li>
                 <li class="li"><Link to="/pokeball">My Pokeball</Link></li>
                 <li class="li"><Link to="/account">Account</Link></li>
+                <li class="li">
+                    <button className="logout-btn" onClick={handleLogOut}>Log Out</button>       
+                </li>
             </ul>
-            <button className="logout-btn" onClick={handleLogOut}>Log Out</button>            
+                 
         </nav>
     )
 }
