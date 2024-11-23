@@ -91,7 +91,7 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
           <div>
             {pokemon ? (
               <>
-                <img src={pokemon.sprites.other.home.front_default}
+                <img src={pokemon.sprites.other.home.front_default || pokemon.sprites.front_default}
                   alt={pokemon.name}
                   style={{ width: '250px', height: 'auto' }} />
                 <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>

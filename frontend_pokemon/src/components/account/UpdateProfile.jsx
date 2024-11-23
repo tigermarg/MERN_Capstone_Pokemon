@@ -62,7 +62,8 @@ function UpdateProfileForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Display email */}
+      {/* Display user info*/}
+      <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
 
       {/* Password field to change password */}

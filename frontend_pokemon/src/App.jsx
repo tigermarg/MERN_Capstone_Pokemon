@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Survey from './pages/Survey';
 import Pokeball from './pages/Pokeball';
+import Account from './pages/Account';
 import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         </Route>
         <Route path="/survey" element={<Survey addPokemonToMyPokeball={addPokemonToMyPokeball} />} />
         <Route path="/pokeball" element={<Pokeball pokemons={myPokeball} />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </div>
   )

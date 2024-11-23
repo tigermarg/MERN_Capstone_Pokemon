@@ -8,6 +8,7 @@ export default function NavBar(){
             <ul className='nav-links'>
                 <li><Link to="/survey">Catch Pokemon</Link></li>
                 <li><Link to="/pokeball">My Pokeball</Link></li>
+                <li><Link to="/account">Account</Link></li>
             </ul>
         </nav>
     )

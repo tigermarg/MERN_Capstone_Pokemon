@@ -1,7 +1,7 @@
 //Imports
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/auth_context';
+import { useAuth } from '../../contexts/auth_context';
 
 function SignUpForm() { 
   const [formData, setFormData] = useState({ //State for signUp form
