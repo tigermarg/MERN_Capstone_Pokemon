@@ -8,6 +8,31 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      //Check if alert has been shown in this session
+      window.onload = function() {
+        //If alert has not been displayed in this session, show the alert
+        if (!sessionStorage.getItem("alertShown")) {
+          //Show the alert on first page visit during this session
+          alert("🚨 WARNING! 🚨\nThis page may cause extreme levels of joy. Proceed with caution!");
+          
+          //Mark that the alert has been shown in this session
+          sessionStorage.setItem("alertShown", "true");
+        }
+      }
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Audio -->
+    <div class="audio-container">
+      <audio controls autoplay loop>
+        <source src="https://www.televisiontunes.com/uploads/audio/Pokemon.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </body>
+  
+
 </html>

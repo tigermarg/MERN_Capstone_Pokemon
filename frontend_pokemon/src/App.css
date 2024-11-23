@@ -1,12 +1,13 @@
 .App{
   width: 100vh;
   height: 100vh;
-}
-
-body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body {
+  margin: 0;
 }
 
 .pokeball {
@@ -24,7 +25,19 @@ body {
 
 .nav-links {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start; 
+}
+
+.nav-links .li {
   list-style-type: none;
-  padding: 0px;
+  margin-right: 15px; 
+}
+
+.logout-btn {
+  display: inline-block;
+  background-color: rgba(211, 211, 211, 0.233);
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer; 
 }

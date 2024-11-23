@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/auth_context';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/dashboard/NavBar';
+import pokeball from '../styles/pokeball.jpg';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null); //State for user data
 
-  const { logout, userInfo } = useAuth(); //Get user data and logout from context
+  const { userInfo } = useAuth(); //Get user data and logout from context
   const nav = useNavigate(); //Hook to navigate
 
-  //Handler for log out
-  function handleLogOut() {
-    logout();
-    nav('/'); //Redirect to main page at logout
+  //Handler for click event
+  function handleClick() {
+    nav('/pokeball'); //Navigate to pokeball 
   }
 
   //Get user data when the component mounts
@@ -42,10 +42,10 @@ export default function Dashboard() {
     //Navigation bar
     <div>
       <NavBar />
-      <h1>Welcome, {user.name}</h1>
+      <h1>Welcome, {user.name}!</h1>
 
-      {/* Log Out button */}
-      <button onClick={handleLogOut}>Log Out</button>
+      <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />
+
     </div>
   );
 }
