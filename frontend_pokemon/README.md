@@ -1,8 +1,37 @@
-# React + Vite
+# MERN Application Using Pokemon API and Authentication (Front-end)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### About
+This is the front-end repo for a full stack web application using the MERN (MongoDB, Express, React.js, Node.js) framework. (See below for link to backend repo). The application's front-end is built with React to navigate to the different pages. It utilizes React Hooks for application state management and interfaces directly with the server and API created using MongoDB and Mongoose. Using fetch, it retrieves data from the Pokemon API. 
 
-Currently, two official plugins are available:
+### Technologies
+Windows OS, VS Code
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### How to Get Started
+* Clone the repository
+* Install Dependencies (see below): `npm install`
+* npm run cmd: `npm run dev`
+* Sign Up to explore full capabilities of the application.
+
+| `localhost:` Endpoint | Description | 
+| --- | --- |
+| `/` | Home URL > Click Pokéball to start
+| `/login` | Login page > Enter valid credentials to access Dashboard
+| `/signup` | Sign Up page > Create account using required fields
+| `/dashboard` | Dashboard page (authenticated users) > Navigate to links once authenticated
+| `/survey` | Survey page (authenticated users) > Access to Survey to GET Pokémon
+| `/pokeball` | Pokéball page (authenticated users) > Access Pokéball to see retrieved Pokémon
+| `/account` | Account page (authenticated users) > Access Account page to update & delete account
+
+### Built with:
+* React + Vite: 
+<br>`npm create vite@latest .`
+* React Router:
+<br>`npm i react-router-dom`
+* Universal cookies for React:
+<br>`react-cookie`
+* Pokemon API: https://pokeapi.co/
+<br>-- Retrieve Pokemon information.
+
+### Links:
+* Back-end Repo: 
+<br> https://github.com/tigermarg/Backend_MERN_Capstone_Pokemon.git
