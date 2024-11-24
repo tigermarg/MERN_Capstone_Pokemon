@@ -40,10 +40,10 @@ function LoginForm() {
 
   return ( //Login Form
     <>  
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <div>
         <label>Email:</label>
-        <input type="email" 
+        <input style={{ width: '25em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="email"           
           name="email" 
           onChange={handleChange} 
           required
@@ -51,7 +51,7 @@ function LoginForm() {
       </div>
       <div>
         <label>Password:</label>
-        <input type="password" 
+        <input style={{ width: '25em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="password" 
           name="password" 
           onChange={handleChange} 
           required

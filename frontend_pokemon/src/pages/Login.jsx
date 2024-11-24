@@ -5,8 +5,8 @@ import LoginForm from '../components/login/LoginForm';
 export default function Login() {
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div >
+      <h2>Start Your Journey!</h2>
       <LoginForm />
       
       <p>Don't have an account? <Link to="/signup">Sign up</Link></p>

@@ -52,7 +52,7 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
 
       //Set the fetched Pokemon data
       setPokemon(pokemonData);
-      alert(`Congrats! You caught...`)
+      alert(`Congrats! Your training begins now...`)
 
       addPokemonToMyPokeball(pokemonData); //Add Pokemon to MyPokeball
 
@@ -73,12 +73,12 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
   
     return (
       //Track mouse movement //Set to full page
-      <div onMouseMove={handleMouseMove} style={{ position: 'relative', height: '100vh', width: '100vw' }}>
+      <div onMouseMove={handleMouseMove}  className="survey-container">
         {!isSubmitted ? (
           <>
-            <h2>Which best describes your current mood?</h2>
-  
-            <form onSubmit={handleSubmit}>
+            <h2 style={{ marginLeft: '5%'}}>Which best describes your current mood?</h2>
+
+            <form style={{ marginRight: '30%'}} onSubmit={handleSubmit}>
               <div>
                 {Object.keys(moodToPokemonType).map((mood) => (
                   <label key={mood}>
@@ -103,17 +103,17 @@ function Survey({ addPokemonToMyPokeball }){ //Destructure and pass in prop
                 <img src={pokemon.sprites.other.home.front_default || pokemon.sprites.front_default}
                   alt={pokemon.name}
                   style={{
-                    position: 'absolute', //Absolute positioning to allow free movemen around page
+                    position: 'absolute', //Absolute positioning to allow free movement around page
                     top: `${pokemonPosition.y}px`, //Y positioning for movement
                     left: `${pokemonPosition.x}px`, //X positioning for movement
-                    width: '200px', //Pokemon size
+                    width: '250px', //Pokemon size
                     height: 'auto',
                     cursor: 'grab', //Indicate Pokemon is draggable
                   }}
                   draggable //Attribute set to true
                 />
               ) : (
-                <p>Catching your Pokémon...</p>
+                <p style={{ fontSize: "1.5rem", textAlign: "center", marginTop:"6em" }}>Catching your Pokémon...</p>
               )}
             </div>
           </>

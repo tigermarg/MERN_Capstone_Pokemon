@@ -69,14 +69,14 @@ function UpdateProfileForm() {
       {/* Password field to change password */}
       <div>
         <label>Change Password:</label>
-        <input type="password" 
+        <input style={{ width: '20em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="password" 
           name="password"
           value={formData.password}
           onChange={handleChange}
         />
       </div>
 
-      <button type="submit">Update</button>
+      <button style={{ backgroundColor: "#fcfbfb8f", color: "#2b8d08", border: "none" }} type="submit">Update</button>
       
       {/* Display error/success message */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -86,3 +86,4 @@ function UpdateProfileForm() {
 }
 
 export default UpdateProfileForm;
+

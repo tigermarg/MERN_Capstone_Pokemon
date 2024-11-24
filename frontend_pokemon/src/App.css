@@ -1,9 +1,10 @@
-.App{
-  width: 100vh;
-  height: 100vh;
+.App {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start; 
   align-items: center;
+  width: 100%; 
+  min-height: 100vh; 
 }
 
 .nav-links {
@@ -19,10 +20,9 @@
 
 .logout-btn {
   display: inline-block;
-  background-color: rgba(211, 211, 211, 0.233);
-  padding: 5px 10px;
+  background-color: #fcfbfb8f; 
+  color: #2b8d08; 
   border: none;
-  cursor: pointer; 
 }
 
 @font-face {
@@ -30,17 +30,21 @@
   src: url('./styles/PocketMonk-15ze.ttf');
 }
 
+html, body {
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+  align-content: center;
+  overflow-x:auto; 
+  overflow-y: auto; 
+}
+
 body {
   font-family: 'Geneva', 'Tahoma', 'sans-serif';
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: auto;
-  text-align: center;
   color: rgba(0, 0, 0, 0.605);
+  text-align: center;
   background-color: #000000b0; 
-  background-size: cover; 
+  background-size: cover;
   background-position: no-repeat center center fixed;
 }
 
@@ -60,20 +64,19 @@ body:before {
   background: url('./styles/background.jpg') no-repeat center center fixed;
   background-size: cover;
   animation: stars 3s infinite ease-in-out;
-  z-index: -1;
+  z-index: -1; 
 }
 
 h1 {
   margin-top: 2px;
   margin-bottom: 2px;
   font-family: 'Pokemon';
-  font-size: 6rem;
+  font-size: 5rem;
   text-shadow: 2px 4px rgba(0, 0, 0, 0.651);
   color: #FFD700; 
   transform: translateY(0);
   animation: popOut 2s ease-out 1, scaleLeftRight 2s ease-in-out 1;
 }
-
 
 @keyframes popOut {
   0% {
@@ -103,8 +106,8 @@ h1 {
 }
 
 .pokeball {
-  width: 120px;
-  height: 120px;
+  width: 20rem;
+  height: auto;
   border-radius: 50%;
   box-shadow: 0 0 10px 5px rgb(254, 254, 254); 
   animation: spin 8s infinite linear, floating 4s ease-in-out infinite;
@@ -133,12 +136,12 @@ h1 {
 }
 
 button {
-  background-color: #ebebebad; 
-  color: #2b8d08; 
+  background-color: #ff6347;
+  color: white;
+  border: none;
   padding: 6px 20px;
   margin: 10px;
   font-size: 1rem;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -147,7 +150,6 @@ button {
 button:hover {
   transform: scale(1.05); 
 }
-
 
 .audio-container {
   text-align: center;
@@ -170,18 +172,17 @@ audio:hover {
 
 .typing {
   font-family: 'Courier New', monospace;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   overflow: hidden;
   border-right: 3px solid black;
   white-space: nowrap;
-  width: 0;
   animation: typing 4s steps(80) forwards, blink 0.75s step-end infinite;
 }
 
 .swipe {
   opacity: 0;
   transform: translateX(100%);
-  animation: swipe 1s ease-out 4s forwards; 
+  animation: swipe 1s ease-out 4.5s forwards; 
 }
 
 @keyframes typing {
@@ -216,4 +217,109 @@ audio:hover {
   p {
     font-size: 1rem;
   }
+}
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  width: 100%; 
+  max-height: 100vh;
+}
+
+.pokemon-card {
+  position: relative;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pokemon-info {
+  position: relative;
+}
+
+.pokemon-details {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 250px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9); 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 10; 
+}
+
+.pokemon-card:hover .pokemon-details {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.pokemon-info img {
+  width: 200px;
+  height: auto;
+}
+
+.pokemon-info h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.pokemon-details ul {
+  padding-left: 20px;
+}
+
+.survey-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+  background: url('./styles/pokeball2.PNG');
+  background-size: contain; 
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 20px;
+  box-sizing: border-box; 
+}
+
+@media (max-width: 768px) {
+  .survey-container {
+    background-position: center center; 
+  }
+}
+
+@media (max-width: 480px) {
+  .survey-container {
+    background-size: contain; 
+    background-position: center center; 
+  }
+}
+
+form {
+  background: #ffffff84;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+label {
+  margin: 10px 0;
+  color: #555;
+  display: flex;
+}
+
+label input {
+  margin-right: 10px;
+  cursor: pointer;
 }

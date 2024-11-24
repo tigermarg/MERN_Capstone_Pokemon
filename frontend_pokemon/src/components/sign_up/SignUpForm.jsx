@@ -42,25 +42,25 @@ function SignUpForm() {
     //Sign Up Form
     <>
     <form onSubmit={handleSubmit}>
-      <div>
+      <div >
         <label>Name:</label>
-        <input type="text" 
+        <input style={{ width: '25em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="text" 
           name="name"
           onChange={handleChange} 
           required
         />
       </div>
-      <div>
+      <div >
         <label>Email:</label>
-        <input type="email" 
+        <input style={{ width: '25em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="email" 
           name="email" 
           onChange={handleChange} 
           required
         />
       </div>
-      <div>
+      <div >
         <label>Password:</label>
-        <input type="password" 
+        <input style={{ width: '25em', borderRadius: "4px", height: "1.5em", borderColor: "silver"}} type="password" 
           name="password" 
           onChange={handleChange} 
           required

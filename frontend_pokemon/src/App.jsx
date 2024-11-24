@@ -34,13 +34,13 @@ function App() {
       <Routes>
         <Route path='/' element={
         <>
-          <h1 style={{ fontFamily: 'Pokemon' }}>Your PokéPal awaits!</h1>
-          <h2 className='typing'>Fetch a Pokémon to match your mood...</h2>
-          <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />
+          <h1>Your PokéPal awaits!</h1>
+          <h2 className='typing'>Summon a Pokémon that matches your energy...</h2>
+          <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" />
           <h3 className='swipe'>Click the Pokéball to see who you catch today!</h3>          
         </>
         } />
-        <Route path='/login' element={<Login />} style={{ animation: 'none' }}/>
+        <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />

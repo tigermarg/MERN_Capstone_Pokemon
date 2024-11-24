@@ -44,7 +44,7 @@ export default function Dashboard() {
       <NavBar />
       <h1>Welcome, {user.name}!</h1>
 
-      <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball" style={{ width: '30vw', height: 'auto' }} />
+      <img className="pokeball" onClick={handleClick} src={pokeball} alt="Pokeball"/>
 
     </div>
   );

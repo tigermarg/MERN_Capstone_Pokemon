@@ -6,7 +6,7 @@ export default function SignUp() {
 
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>Join the Adventure!</h2>
       <SignUpForm />
       
       <p>Already have an account? <Link to="/login">Login</Link></p>
