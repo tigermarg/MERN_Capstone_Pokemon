@@ -1,7 +1,7 @@
 # MERN Application Using Pokemon API and Authentication (Front-end)
 
 ### About
-This is the front-end repo for a full stack web application using the MERN (MongoDB, Express, React.js, Node.js) framework. (See below for link to backend repo). The application's front-end is built with React to navigate to the different pages. It utilizes React Hooks for application state management and interfaces directly with the server and API created using MongoDB and Mongoose. Using fetch, it retrieves data from the Pokemon API. 
+This is the front-end for a full stack web application using the MERN (MongoDB, Express, React.js, Node.js) framework. The application's front-end is built with React to navigate to different pages. It utilizes React Hooks for application state management and interfaces directly with the server and API using MongoDB and Mongoose. The application connects to the Pokemon API to retrieve data using fetch. It also uses validation and authentication for user data.
 
 ### Technologies
 Windows OS, VS Code
@@ -12,7 +12,7 @@ Windows OS, VS Code
 * npm run cmd: `npm run dev`
 * Sign Up to explore full capabilities of the application.
 
-| `localhost:` Endpoint | Description | 
+| Endpoint | Description | 
 | --- | --- |
 | `/` | Home URL > Click Pokéball to start
 | `/login` | Login page > Enter valid credentials to access Dashboard
@@ -32,6 +32,3 @@ Windows OS, VS Code
 * Pokemon API: https://pokeapi.co/
 <br>-- Retrieve Pokemon information.
 
-### Links:
-* Back-end Repo: 
-<br> https://github.com/tigermarg/Backend_MERN_Capstone_Pokemon.git

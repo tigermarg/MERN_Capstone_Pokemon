@@ -1,7 +1,7 @@
 # MERN Application Using Pokemon API and Authentication (Back-end)
 
 ### About
-This is the back-end for a full stack web application using the MERN (MongoDB, Express, React.js, Node.js) framework. (See below for link to front-end repo). The application's back-end is built with a RESTful API using Node and Express. It includes API routes for CRUD operations (Create, Read, Update and Delete). It allows users to create an account (POST), retrieve account information (GET), update information (PUT) and delete their account (DELETE). The application utilizes Mongoose to interface with the database (MongoDB) and includes authentication to access authorized routes.
+This is the back-end for a full stack web application using the MERN (MongoDB, Express, React.js, Node.js) framework. The application's back-end is built with a RESTful API using Node, Express and MongoDB. It includes API routes for CRUD operations. It allows users to create an account (POST), retrieve account information (GET), update information (PUT) and delete their account (DELETE). The application utilizes Mongoose to interface with the database (MongoDB) and includes authentication to access authorized routes.
 
 ### Technologies
 Windows OS, VS Code
@@ -40,7 +40,3 @@ Windows OS, VS Code
 <br>-- Mechanism for integrating applications
 * `morgan`: https://expressjs.com/en/resources/middleware/morgan.html
 <br>-- HTTP request logger middleware for Node.js
-
-### Links:
-* Front-end Repo:
-<br> https://github.com/tigermarg/Frontend_MERN_Capstone_Pokemon.git
